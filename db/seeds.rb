@@ -19,24 +19,24 @@ require 'faker'
 end
 puts "10 utilisateurs créés"
 
-15.times do
+5.times do
     event = Event.create(
         start_date: Faker::Time.forward(days: 100, format: :long),
         duration: [15, 30, 45, 60, 90, 120, 150].sample,
-        title: Faker::Quote.singular_siegler,
+        title: Faker::Movies::HarryPotter.spell,
         description: Faker::ChuckNorris.fact,
         price: rand(40..200),
         location: Faker::Nation.capital_city,
         admin: User.all.sample,    
     )
 end
-puts "15 évènements créés"
+puts "3 évènements créés"
 
-100.times do
+20.times do
     attendance = Attendance.create(
         event: Event.all.sample,
         guest: User.all.sample,
         stripe_customer_id: Faker::Invoice.reference,
     )
 end
-puts "100 présences confirmées"
+puts "15 présences confirmées"
