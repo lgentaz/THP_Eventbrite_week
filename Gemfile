@@ -71,3 +71,5 @@ gem 'better_errors'
 gem 'dotenv-rails'
 
 gem 'sendgrid-ruby'
+
+gem 'dotenv-rails'
