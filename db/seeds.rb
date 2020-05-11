@@ -27,7 +27,7 @@ puts "10 utilisateurs créés"
         description: Faker::ChuckNorris.fact,
         price: rand(40..200),
         location: Faker::Nation.capital_city,
-        admin: User.all.sample    
+        admin: User.all.sample,    
     )
 end
 puts "15 évènements créés"
@@ -36,7 +36,7 @@ puts "15 évènements créés"
     attendance = Attendance.create(
         event: Event.all.sample,
         guest: User.all.sample,
-        stripe_customer_id: Faker::Invoice.reference
+        stripe_customer_id: Faker::Invoice.reference,
     )
 end
 puts "100 présences confirmées"
