@@ -6,8 +6,9 @@
         </div>
         <div class="card-body py-2 row">
             <div class="card-title col-sm-8">
-                <h4>le <%= @event.start_date.strftime("%d/%m/%y") %> à <%= @event.start_date.strftime("%H:%M") %></h4>
-                <h6> Durée totale : <%=@event.duration%> minutes</h6>
+                <h4>le <%= @event.start_date.strftime("%d/%m/%y") %> </h4>
+                <h6> Début : <%= @event.start_date.strftime("%H:%M") %> <br>
+                Fin : <%=@event.end_date.strftime("%H:%M")%></h6>
                 <br>
                 <h5><%= @event.description%></h5>
                 <br>
@@ -17,11 +18,6 @@
                 <br>
                 <p>Contact: <%=@event.admin.email%></p>
 
-            </div>
-        </div>
-        <div class="card-footer text-muted card-body d-flex justify-content-between">
-            <div> 
-                <%= link_to "Modifier l'évènement'", edit_event_path, class:"btn btn-outline-info"%>
             </div>
         </div>
     </div>

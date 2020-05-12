@@ -20,6 +20,10 @@ class Event < ApplicationRecord
         errors.add(:start_date, "ne doit pas être passée") unless start_date > Time.now
     end
 
+    def end_date
+        start_date + (duration * 60)
+    end
+
     def duration_positive
         return unless duration < 0
     end
