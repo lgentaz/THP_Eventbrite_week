@@ -7,17 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-#10.times do
-#    user = User.new(
-#        first_name: Faker::Name.first_name,
-#        last_name: Faker::Name.last_name,
-#        description: Faker::Hipster.sentence,
-#        encrypted_password: "bonjour",
-#    )
-#    user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
-#    user.save
-#end
-#puts "10 utilisateurs créés"
+10.times do
+    user = User.new(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        description: Faker::Hipster.sentence,
+        password: "bonjour",
+    )
+    user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
+    user.save
+end
+puts "10 utilisateurs créés"
 
 5.times do
     event = Event.create(
