@@ -1,0 +1,20 @@
+<div class="container">
+    <div>
+    </div>
+        <div class="mt-5">
+            <h2><%= @event.title %></h2>
+        </div>
+        <div class="card-body py-2 row">
+            <div class="card-title col-sm-8">
+                <br />
+                <h5 class="py-2"><span class="text-primary">Email :  </span><%= current_user.email%></h5><br>
+                <h5><span class="text-primary">A propos de moi :  </span><%= current_user.description%></h5>
+            </div>
+        </div>
+        <div class="card-footer text-muted card-body d-flex justify-content-between">
+            <div> 
+                <%= link_to "Modifier l'évènement'", edit_event_path, class:"btn btn-outline-info"%>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 <div class="jumbotron-fluid">
-  <div class="align-center ml-5 mt-3 pt-5">
+  <div class="align-center ml-5 pt-5">
     <hr>
     <h1 class="display-4">Fais l'évènement!</h1>
     <p class="lead">Bienvenue sur EventSharp<i class="fab fa-slack-hash"></i> <br> <br>ton agenda événementiel.</p>
     <hr>
     <p class="lead">
-      <a class="btn btn-warning btn-lg" href="#" role="button">A propos</a>
+      <%= link_to "Nouvel Evenement", new_event_path, class: "btn btn-warning btn-lg" %>
     </p>
   </div>
 </div>
@@ -14,7 +14,7 @@
   <div class="text-center">
   <h1 class="mt-3 mb-5 border border-warning p-2">Agenda des prochains évènements</h1>
   </div>
-  <div class="col-sm-6">
+  <div class="text-center col-sm-6">
     <% Event.order("start_date ASC").all.each do |event| %>
       <div class="border p-2 m-2">
       <h2><%= event.start_date.strftime("%d/%m/%y") %></h2>

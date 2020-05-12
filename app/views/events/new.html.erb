@@ -1,0 +1,46 @@
+<div class="container">
+    <h2 class="mt-5">Enregistrer un nouvel évènement</h2>
+
+    <div>
+        <%= form_for(:events,  url:(events_path), method: :post) do |f| %>
+            <div class="field my-3">
+                <%= f.label "Titre" %><br />
+                <%= f.text_field :title, autofocus: true, placeholder: "mon évènement" %>
+            </div>
+
+            <div class="field my-3">
+                <%= f.label "Lieu" %> <br />
+                <%= f.text_field :location, placeholder: "où" %>
+            </div>
+
+            <div class="field my-3">
+                <%= f.label "Date" %> <br />
+                <%= f.datetime_select :start_date %>
+            </div>
+
+            <div class="field my-3">
+                <%= f.label "Durée" %> <br />
+                <%= f.text_field :start_date, placeholder: "en min (incrément 5 mins)" %>
+            </div>
+
+            <div class="field my-3">
+                <%= f.label "Description" %> <br />
+                <%= f.text_area :description, placeholder: :description %>
+            </div>
+
+            <div class="field my-3">
+                <%= f.label "Prix des places" %> <br />
+                <%= f.text_field :price, placeholder: "entre 1 et 1000" %>
+            </div>
+
+            <div class="actions">
+                <%= f.submit "Enregistrer" %>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="mt-5">
+    <%= link_to "Retour", :back %>
+    </div>
+
+</div>
