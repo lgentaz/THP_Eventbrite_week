@@ -1,35 +1,35 @@
 <div class="container">
-  <div class="card my-5">
-    <div class="card-header">
-    <h2><%= current_user.full_name%></h2>
+  <div class="mt-5">
+      <h2><%= current_user.full_name%></h2>
+  </div>
+  <div class="card-body py-2 row">
+    <div class="card-title col-sm-8">
+      <br/>
+      <h5 class="py-2"> Email : <%= current_user.email%></h5><br>
+      <h5>A propos de moi : <%= current_user.description%></h5>
     </div>
-    <div class="card-body py-2 row">
-      <div class="card-title col-sm-8">
-        <br />
-        <h5 class="py-2"><span class="text-warning">Email :  </span><%= current_user.email%></h5><br>
-        <h5><span class="text-warning">A propos de moi :  </span><%= current_user.description%></h5>
-      </div>
-    </div>
-    <div class="card-footer text-muted card-body d-flex justify-content-between">
-      <div> 
-        <%= link_to "Modifier le profil", edit_user_path, class:"btn btn-outline-info"%>
-        <%= link_to "Modifier le login", edit_user_registration_path, class:"btn btn-outline-info"%>
-      </div>
+  </div>
+  <div class="card-footer text-muted card-body d-flex justify-content-between">
+    <div> 
+      <%= link_to "Modifier le profil", edit_user_path, class:"btn btn-outline-primary"%>
+      <%= link_to "Modifier le login", edit_user_registration_path, class:"btn btn-outline-primary"%>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-sm-6">
-    <h3 class="mb-3">Organisateur : </h3>
+    <h4 class="mb-3">Organisateur : </h4>
+    <p><%= Event.where(admin: current_user.id).count() %> évènement(s)</p>
     <% Event.where(admin_id: current_user.id).each do |event| %>
-      <h5> <%= link_to event.title, event_path(event.id), class:"text-warning"%>
+      <h5> <%= link_to event.title, event_path(event.id), class:"text-primary"%>
       </h5>
      <% end %>
     </div>
         <div class="col-sm-6">
     <h3 class="mb-3">Participant : </h3>
+    <p><%= Attendance.where(guest_id: current_user.id).count() %> évènement(s)</p>
     <% Attendance.where(guest_id: current_user.id).each do |attendance| %>
-      <h5> <%= link_to attendance.event.title, event_path(attendance.event.id), class:"text-warning"%>
+      <h5> <%= link_to attendance.event.title, event_path(attendance.event.id), class:"text-primary"%>
       </h5>
      <% end %>
     </div>
