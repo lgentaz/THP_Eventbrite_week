@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <h1 class="display-4">Fait l'évènement!</h1>
+  <p class="lead">Bienvenue sur EventSharp<i class="fab fa-slack-hash"></i>, ton agenda evenementiel.</p>
+  <hr>
+  <p class="lead">
+    <a class="btn btn-warning btn-lg" href="#" role="button">A propos</a>
+  </p>
+</div>
+<div class="container-fluid">
+  <div class="text-center">
+   <h1 class="mb-5 ">Agenda des prochains évènements</h1>
+  </div>
+  <div>
+    <% Event.order("start_date ASC").all.each do |event| %>
+      <h2><%= event.start_date.strftime("%d/%m/%y") %></h2>
+      <h3><%= event.title %> <small> à partir de <%= event.start_date.strftime("%H:%M") %></small></h3><br/>
+      <p><%= link_to "Voir l'évènement", event_path(event.id) %></p><br/>
+    <%end%>
+  </div>
+</div>
+

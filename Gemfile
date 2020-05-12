@@ -72,4 +72,6 @@ gem 'dotenv-rails'
 
 gem 'sendgrid-ruby'
 
-gem 'dotenv-rails'
+gem 'devise'
+
+gem 'rails-i18n'
