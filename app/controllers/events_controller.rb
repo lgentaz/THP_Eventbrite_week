@@ -8,11 +8,11 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new(title: params[:title], start_date: params[:start_date], duration: params[:duration], description: params[:description], price: params[:price], location: params[:location], admin: current_user)
+    @event = Event.new
   end
 
   def create
-    @event = Event.new(title: params[:title], start_date: params[:start_date], duration: params[:duration], description: params[:description], price: params[:price], location: params[:location], admin: current_user)
+    @event = Event.new(event_params)
     if @event.save
       flash[:success] = "Bravo! Ton évènement créé."
       redirect_to root_path
@@ -29,12 +29,8 @@ class EventsController < ApplicationController
 
   end
 
-  def edit
-    
-  end
-
   def event_params
-    params.require(:events).permit(:title, :start_date, :duration, :description, :price, :location, :admin)
+    params.require(:events).permit(:title, :start_date, :duration, :description, :price, :location, :admin_id)
   end
 
 

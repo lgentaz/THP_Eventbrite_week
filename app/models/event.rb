@@ -21,13 +21,11 @@ class Event < ApplicationRecord
     end
 
     def duration_positive
-        return unless duration
-        error.add(:duration, "doit être positif ") unless duration > 0 
+        return unless duration < 0
     end
 
     def duration_5
-        return unless duration
-        error.add(:duration, "doit être multiple de 5") unless (duration % 5) == 0
+        return unless duration != 0 
     end
 
 end
