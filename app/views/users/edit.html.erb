@@ -1,0 +1,29 @@
+<div class="container mt-5">
+<h2 class="mt-5">Editer mon profil</h2>
+
+<div>
+<%= form_for(current_user, url: user_path(current_user), method: :put) do |f| %>
+  <div class="field my-3">
+    <%= f.label "Prénom" %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: :first_name %>
+  </div>
+
+  <div class="field my-3">
+    <%= f.label "Nom" %> <br />
+    <%= f.text_field :last_name, autocomplete: :last_name %>
+  </div>
+
+  <div class="field my-3">
+    <%= f.label "À propos" %> <br />
+    <%= f.text_area :description, autocomplete: :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Mettre à jour" %>
+  </div>
+<% end %>
+</div>
+
+<div class="mt-5">
+<%= link_to "Retour", :back %>
+</div>
