@@ -2,13 +2,21 @@
     <div>
     </div>
         <div class="mt-5">
-            <h2><%= @event.title %></h2>
+            <h2><%= @event.title %> <small> à <%=@event.location%></small></h2>
         </div>
         <div class="card-body py-2 row">
             <div class="card-title col-sm-8">
-                <br />
-                <h5 class="py-2"><span class="text-primary">Email :  </span><%= current_user.email%></h5><br>
-                <h5><span class="text-primary">A propos de moi :  </span><%= current_user.description%></h5>
+                <h4>le <%= @event.start_date.strftime("%d/%m/%y") %> à <%= @event.start_date.strftime("%H:%M") %></h4>
+                <h6> Durée totale : <%=@event.duration%> minutes</h6>
+                <br>
+                <h5><%= @event.description%></h5>
+                <br>
+                <p>Prix/pers.: <%=@event.price%> € </p>
+                <br>
+                <p><%=@event.attendances.count%> personne(s) inscrites</p>
+                <br>
+                <p>Contact: <%=@event.admin.email%></p>
+
             </div>
         </div>
         <div class="card-footer text-muted card-body d-flex justify-content-between">
