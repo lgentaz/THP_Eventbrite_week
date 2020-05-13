@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
 
     belongs_to :admin, class_name: "User"
-    has_many :attendances
-    has_many :guests, class_name: "User", through: :attendances
+    has_many :attendances, dependent: :destroy
+    has_many :guests, class_name: "User", through: :attendances, dependent: :destroy
     
     validates :start_date, presence: true
     validate :start_must_be_future
