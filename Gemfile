@@ -75,3 +75,5 @@ gem 'sendgrid-ruby'
 gem 'devise'
 
 gem 'rails-i18n'
+
+gem 'stripe'

@@ -17,8 +17,14 @@
                 <p><%=@event.attendances.count%> personne(s) inscrites</p>
                 <br>
                 <p>Contact: <%=@event.admin.email%></p>
-
             </div>
         </div>
+        <% if !organise?(@event) && attending?(@event) %>
+            <p> Déjà inscrit(e) </p>
+        <% elsif !organise?(@event) && user_signed_in?%> 
+            <%= link_to "Rejoindre l'évènement", new_event_attendance_path(event_id: @event.id), class:"btn btn-dark" %></h4>
+        <% elsif organise?(@event)%>
+            <%= link_to "Voir détail", event_attendances_path(event_id: @event.id), class:"btn btn-dark" %></h4>
+        <% end %>
     </div>
 </div>
