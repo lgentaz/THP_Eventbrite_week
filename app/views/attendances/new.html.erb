@@ -3,31 +3,41 @@
     <h4 class="mt-5">Participer</h4>
     <div>
 
-    <%= form_tag event_attendances_path do %>
-        <article>
-            <% if flash[:error].present? %>
-            <div id="error_explanation">
-                <p><%= flash[:error] %></p>
+    <%if is_free?(@event)%>
+        <%= form_tag event_attendances_path do %>
+            <%= hidden_field_tag :guest_id, :value => current_user.id %>
+            <%= hidden_field_tag :event_id, :value => params[:id] %>
+            
+            <div class="actions">
+                <%= submit_tag "S'inscrire" %>
             </div>
-            <% end %>
-            <label class="amount">
-            <span>A régler : <%= @event.price%> €</span>
-            </label>
-        </article>
+        <%end%>
+    <%else%>
+        <%= form_tag event_attendances_path do %>
+            <article>
+                <% if flash[:error].present? %>
+                <div id="error_explanation">
+                    <p><%= flash[:error] %></p>
+                </div>
+                <% end %>
+                <label class="amount">
+                <span>A régler : <%= @event.price%> €</span>
+                </label>
+            </article>
 
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description= <%= @event.title%>
-                data-amount= <%= @event.price * 100%>
-                data-currency= "eur"
-                data-locale="auto">
-                </script>
-        
-        <%= hidden_field_tag :guest_id, :value => current_user.id %>
-        <%= hidden_field_tag :event_id, :value => params[:id] %>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description= <%= @event.title%>
+                    data-amount= <%= @event.price * 100%>
+                    data-currency= "eur"
+                    data-locale="auto">
+                    </script>
+            
+            <%= hidden_field_tag :guest_id, :value => current_user.id %>
+            <%= hidden_field_tag :event_id, :value => params[:id] %>
 
-    <% end %>
-
+        <% end %>   
+    <%end%>
     </div>
 
     <div class="mt-5">

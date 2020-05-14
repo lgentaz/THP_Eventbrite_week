@@ -30,8 +30,50 @@ class EventsController < ApplicationController
 
   end
 
+  def edit
+    @event = Event.find(params[:id])
+    if !current_user?(@event.admin_id)
+      flash[:danger] = "Ce n'est pas ton évènement."
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params_update)
+      flash[:success] = "Bravo! Ta modification a été enregistrée."
+      redirect_to events_path(@event.id)
+    else
+      messages = []
+      if @event.errors.any?
+        @event.errors.full_messages.each do |message|
+          messages << message
+        end
+        flash[:danger] = "Impossible de modifier l'évènement': #{messages.join(" ")}"
+      end
+      redirect_to edit_event_path
+    end 
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    if !current_user?(@event.admin_id)
+      flash[:danger] = "Hé hé c'est pas ton potin ça!!!"
+      redirect_to root_path
+    else
+      @event.destroy
+      flash[:success] = "Supprimé avec succès!"
+      redirect_to root_path
+    end
+
+  end
+
   def event_params
     params.require(:events).permit(:title, :start_date, :duration, :description, :price, :location, :admin_id)
+  end
+
+  def event_params_update
+    params.require(:event).permit(:title, :start_date, :duration, :description, :price, :location, :admin_id)
   end
 
 

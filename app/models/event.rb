@@ -11,7 +11,7 @@ class Event < ApplicationRecord
     validate :duration_5
     validates :title, presence: true, length: { in: 5..140 }
     validates :description, presence: true, length: { in: 20..1000 }
-    validates :price, presence: true, inclusion: { in: 1..1000 }
+    validates :price, presence: true, inclusion: { in: 0..1000 }
     validates :location, presence: true
 
 
@@ -30,6 +30,10 @@ class Event < ApplicationRecord
 
     def duration_5
         return unless duration != 0 
+    end
+
+    def is_free?
+        return unless duration != 0
     end
 
 end

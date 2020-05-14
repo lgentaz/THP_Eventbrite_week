@@ -1,2 +1,25 @@
-<h1>Attendances#index</h1>
-<p>Find me in app/views/attendances/index.html.erb</p>
+
+<div class="container">
+    <div>
+        <div class="mt-5">
+            <h2><%= @event.title %> <small> à <%=@event.location%></small></h2>
+        </div>
+        <div class="card-body py-2 row">
+            <div class="card-title col-sm-8">
+                <h4><%=@event.attendances.count%> personne(s) inscrites</h4>
+            </div>
+            <div class="card-body col-sm-8">
+                <h5>Participants:</h5> <br>
+                <%n = 1%>
+                <%@event.attendances.each do |attend|%>
+                    <p><%=n%> - <%=attend.guest.full_name%> (<%=attend.guest.email%>)</p>
+                    <%n = n + 1%>
+                <%end%>
+            </div>
+        </div>
+        <% if organise?(@event)%>
+            <%= link_to "Modifier", edit_event_path(id: @event.id), class:"btn btn-dark" %> 
+            <%= link_to "Supprimer", event_path(id: @event.id), class:"btn btn-danger", data: { confirm: "Êtes-vous sûr de vouloir supprimer?" }, method: :delete %> 
+        <% end %>
+    </div>
+</div>

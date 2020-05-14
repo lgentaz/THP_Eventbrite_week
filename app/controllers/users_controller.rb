@@ -22,8 +22,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    puts @user
-    puts current_user.id
     if @user.update(user_params)
       flash[:success] = "Bravo! Ta modification a été enregistrée."
       redirect_to user_path(@user.id)

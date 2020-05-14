@@ -5,32 +5,32 @@
         <%= form_for(:events,  url:(events_path), method: :post) do |f| %>
             <div class="field my-3">
                 <%= f.label "Titre" %><br />
-                <%= f.text_field :title, autofocus: true, placeholder: "mon évènement" %>
+                <%= f.text_field :title, autofocus: true, placeholder: "mon évènement", class: "form-control" %>
             </div>
 
             <div class="field my-3">
                 <%= f.label "Lieu" %> <br />
-                <%= f.text_field :location, placeholder: "où" %>
+                <%= f.text_field :location, placeholder: "où", class: "form-control" %>
             </div>
 
             <div class="field my-3">
                 <%= f.label "Date" %> <br />
-                <%= f.datetime_select :start_date %>
+                <%= f.datetime_select :start_date, class: "form-control" %>
             </div>
 
             <div class="field my-3">
                 <%= f.label "Durée" %> <br />
-                <%= f.text_field :duration, placeholder: "en min (incrément 5 mins)" %>
+                <%= f.text_field :duration, placeholder: "en min (incrément 5 mins)", class: "form-control" %>
             </div>
 
             <div class="field my-3">
                 <%= f.label "Description" %> <br />
-                <%= f.text_area :description, placeholder: :description %>
+                <%= f.text_area :description, placeholder: :description, class: "form-control" %>
             </div>
 
             <div class="field my-3">
                 <%= f.label "Prix des places" %> <br />
-                <%= f.text_field :price, placeholder: "entre 1 et 1000" %>
+                <%= f.text_field :price, placeholder: "entre 0 et 1000", class: "form-control" %>
             </div>
 
             <%= f.hidden_field :admin_id, :value => current_user.id %>
@@ -42,7 +42,7 @@
     </div>
 
     <div class="mt-5">
-    <%= link_to "Retour", :back %>
+    <%= link_to "Retour", :back, class: "text-primary" %>
     </div>
 
 </div>

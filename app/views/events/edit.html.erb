@@ -1,0 +1,48 @@
+<div class="container">
+
+<h2 class="mt-5">Editer l'évènement : <%= @event.title %></h2>
+
+<div>
+  <%= form_for(@event, url: event_path(@event), method: :put) do |f| %>
+    <div class="field my-3">
+        <%= f.label "Titre" %><br />
+        <%= f.text_field :title, autofocus: true, autocomplete: :title, class: "form-control" %>
+    </div>
+
+    <div class="field my-3">
+        <%= f.label "Lieu" %> <br />
+        <%= f.text_field :location, autocomplete: :location, class: "form-control" %>
+    </div>
+
+    <div class="field my-3">
+        <%= f.label "Date" %> <br />
+        <%= f.datetime_select :start_date, autocomplete: :start_date, class: "form-control" %>
+    </div>
+
+    <div class="field my-3">
+        <%= f.label "Durée" %> <br />
+        <%= f.text_field :duration, autocomplete: :location, placeholder: "en min (incrément 5 mins)", class: "form-control" %>
+    </div>
+
+    <div class="field my-3">
+        <%= f.label "À propos" %> <br />
+        <%= f.text_area :description, autocomplete: :description, class: "form-control" %>
+    </div>
+
+    <div class="field my-3">
+        <%= f.label "Prix des places" %> <br />
+        <%= f.text_field :price, autocomplete: :description, placeholder: "entre 0 et 1000", class: "form-control" %>
+    </div>
+
+    <%= f.hidden_field :admin_id, :value => current_user.id %>
+
+    <div class="actions">
+        <%= f.submit "Mettre à jour" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="mt-5">
+<%= link_to "Retour", :back %>
+</div>
+
