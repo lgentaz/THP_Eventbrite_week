@@ -8,6 +8,11 @@
       <h5 class="py-2"> Email : <%= current_user.email%></h5><br>
       <h5>A propos de moi : <%= current_user.description%></h5>
     </div>
+    <%if @user.avatar.attached?%>
+      <%= image_tag @user.avatar, alt: 'avatar' %>
+    <%else%>
+      <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+    <%end%>
   </div>
   <div class="card-footer text-muted card-body d-flex justify-content-between">
     <div> 

@@ -33,6 +33,12 @@
                 <%= f.text_field :price, placeholder: "entre 0 et 1000", class: "form-control" %>
             </div>
 
+             <div class="field my-3">
+                <%= f.label "Illustration" %> <br />
+                <%= f.file_field :illustration %>
+            </div>
+           
+
             <%= f.hidden_field :admin_id, :value => current_user.id %>
 
             <div class="actions">

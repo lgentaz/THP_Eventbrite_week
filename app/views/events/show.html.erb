@@ -18,6 +18,13 @@
                 <br>
                 <p>Contact: <%=@event.admin.email%></p>
             </div>
+            <div class= "card-body">
+                <%if @event.illustration.attached?%>
+                    <%= image_tag @event.illustration, alt: 'illustration' %>
+                <%else%>
+                    <p>=== Il n'y a pas encore d'illustration lié à cet évènement ===</p>
+                <%end%>
+            </div>
         </div>
         <% if !organise?(@event) && attending?(@event) %>
             <p> Déjà inscrit(e) </p>

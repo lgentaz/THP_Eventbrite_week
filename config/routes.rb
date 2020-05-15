@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   
   resources :events do
     resources :attendances
+    resources :illustrations, only: [:create]
   end
 
-  resources :users
+
+  resources :users do
+    resources :avatars, only: [:create]
+  end
 
 end

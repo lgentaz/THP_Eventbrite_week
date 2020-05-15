@@ -3,7 +3,8 @@ class Event < ApplicationRecord
     belongs_to :admin, class_name: "User"
     has_many :attendances, dependent: :destroy
     has_many :guests, class_name: "User", through: :attendances, dependent: :destroy
-    
+    has_one_attached :illustration
+
     validates :start_date, presence: true
     validate :start_must_be_future
     validates :duration, presence: true
@@ -13,7 +14,7 @@ class Event < ApplicationRecord
     validates :description, presence: true, length: { in: 20..1000 }
     validates :price, presence: true, inclusion: { in: 0..1000 }
     validates :location, presence: true
-
+#    validates :illustration, presence: true
 
     def start_must_be_future
         return unless start_date 
@@ -30,10 +31,6 @@ class Event < ApplicationRecord
 
     def duration_5
         return unless duration != 0 
-    end
-
-    def is_free?
-        return unless duration != 0
     end
 
 end

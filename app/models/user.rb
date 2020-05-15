@@ -6,6 +6,7 @@ class User < ApplicationRecord
     
     after_create :welcome_send
 
+    has_one_attached :avatar
     has_many :guest_attendances, foreign_key: 'guest_id', class_name: "Attendance", dependent: :destroy
     has_many :admin_events, foreign_key: 'admin_id', class_name: "Event", dependent: :destroy
 #    validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" }

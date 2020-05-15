@@ -63,9 +63,10 @@ class AttendancesController < ApplicationController
         redirect_to new_event_path
       end   
     end 
-        rescue Stripe::CardError => e
-        flash[:error] = e.message
-        redirect_to root_path
+
+    rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to root_path
 
 
   end
