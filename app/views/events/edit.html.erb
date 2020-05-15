@@ -36,6 +36,11 @@
 
     <%= f.hidden_field :admin_id, :value => current_user.id %>
 
+    <div class="field my-3">
+        <%= f.label "Illustration" %> <br />
+        <%= f.file_field :illustration, autocomplete: :illustration %>
+    </div>
+
     <div class="actions">
         <%= f.submit "Mettre à jour" %>
     </div>

@@ -19,6 +19,12 @@
     <%= f.text_area :description, autocomplete: :description, class: "form-control" %>
   </div>
 
+
+  <div class="field my-3">
+    <%= f.label "Avatar" %> <br />
+    <%= f.file_field :avatar, autocomplete: :avatar %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Mettre à jour" %>
   </div>

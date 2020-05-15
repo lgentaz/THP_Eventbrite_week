@@ -14,7 +14,6 @@ class Event < ApplicationRecord
     validates :description, presence: true, length: { in: 20..1000 }
     validates :price, presence: true, inclusion: { in: 0..1000 }
     validates :location, presence: true
-#    validates :illustration, presence: true
 
     def start_must_be_future
         return unless start_date 
