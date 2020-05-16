@@ -1,0 +1,3 @@
+module Superadmin::EventsHelper
+
+end

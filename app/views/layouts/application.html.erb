@@ -45,7 +45,10 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <%= link_to "Profil", user_path(current_user.id), class: "dropdown-item"%>
-              <%= link_to "Editer", edit_user_registration_path, class: "dropdown-item"%>        
+              <%= link_to "Editer", edit_user_registration_path, class: "dropdown-item"%>
+              <%if current_user.is_superadmin == "t" %>      
+              <%= link_to "Admin Dashboard", superadmin_root_path, class: "dropdown-item"%>
+              <%end%>   
             </div>
           </div>
         </li>

@@ -16,4 +16,9 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
 
+  namespace :superadmin do
+    root 'dashboard#index'
+    resources :events, :users
+  end
+
 end
